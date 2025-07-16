@@ -40,7 +40,7 @@ const teamMembers = [
 const generateCard = function (member) {
   const memberCard = `<div class="col-12 col-md-6 col-lg-4 mb-3">
       <div class="d-flex bg-black text-white p-2">
-        <img src="${member.img}" alt="Portrait of ${member.name}" class="me-3"
+        <img src="js/${member.img}" alt="Portrait of ${member.name}" class="me-3"
           style="width: 100px; height: 100px; object-fit: cover;">
         <div>
           <h5 class="mb-0">${member.name.toUpperCase()}</h5>
@@ -53,3 +53,10 @@ const generateCard = function (member) {
   `;
   return memberCard;
 };
+
+const teamContainer = document.getElementById('profileMembers');
+
+for (let i = 0; i < teamMembers.length; i++) {
+  let profile = generateCard(teamMembers[i])
+  teamContainer.innerHTML += profile;
+}
