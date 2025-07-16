@@ -36,3 +36,20 @@ const teamMembers = [
     img: "img/female3.png"
   }
 ];
+
+const generateCard = function (member) {
+  const memberCard = `<div class="col-12 col-md-6 col-lg-4 mb-3">
+      <div class="d-flex bg-black text-white p-2">
+        <img src="${member.img}" alt="Portrait of ${member.name}" class="me-3"
+          style="width: 100px; height: 100px; object-fit: cover;">
+        <div>
+          <h5 class="mb-0">${member.name.toUpperCase()}</h5>
+          <p class="mb-0">${member.role}</p>
+          <p class="mb-0"><a href="mailto:${member.email}"
+            class="text-info text-decoration-none">${member.email}</a></p>
+        </div>
+      </div>
+    </div>
+  `;
+  return memberCard;
+};
