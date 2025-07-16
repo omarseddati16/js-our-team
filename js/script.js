@@ -40,7 +40,7 @@ const teamMembers = [
 const generateCard = function (member) {
   const memberCard = `<div class="col-12 col-md-6 col-lg-4 mb-3">
       <div class="d-flex bg-black text-white p-2">
-        <img src="js/${member.img}" alt="Portrait of ${member.name}" class="me-3"
+        <img src="${member.img}" alt="Portrait of ${member.name}" class="me-3"
           style="width: 100px; height: 100px; object-fit: cover;">
         <div>
           <h5 class="mb-0">${member.name.toUpperCase()}</h5>
@@ -56,7 +56,47 @@ const generateCard = function (member) {
 
 const teamContainer = document.getElementById('profileMembers');
 
-for (let i = 0; i < teamMembers.length; i++) {
-  let profile = generateCard(teamMembers[i])
-  teamContainer.innerHTML += profile;
+
+const cicleCard = function () {
+  for (let i = 0; i < teamMembers.length; i++) {
+    let profile = generateCard(teamMembers[i])
+    teamContainer.innerHTML += profile;
+  }
 }
+// bonus 
+
+const button = document.getElementById('addProfile');
+
+button.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  teamContainer.innerHTML = '';
+
+  const name = document.getElementById('name').value
+  const role = document.getElementById('role').value
+  const email = document.getElementById('email').value
+  const img = document.getElementById('img').value
+
+  if (name == '' || role == '' || email == '' || img == '') {
+    alert('Tutti i campi sono obbligatori');
+    return;
+  }
+
+  const newRole = {
+    name,
+    role,
+    email,
+    img
+  }
+
+  teamMembers.push(newRole);
+
+  document.getElementById('name').value = '';
+  document.getElementById('role').value = '';
+  document.getElementById('email').value = '';
+  document.getElementById('img').value = '';
+
+  cicleCard();
+})
+
+cicleCard();
